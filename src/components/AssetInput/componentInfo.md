@@ -1,0 +1,4 @@
+- As a user, I can input new cryptos
+- I can use the form dropdown to select my crypto
+- I can input the amount I own of that crypto
+- I can't submit until the select and input are filled out
