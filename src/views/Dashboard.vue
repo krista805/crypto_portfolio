@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <div class="dashboard">
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <HelloWorld msg="Welcome to Your Portfolio"/>
       <PortfolioValue />
       <AssetList />
       <AssetInput />
