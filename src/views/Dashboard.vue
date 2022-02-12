@@ -4,12 +4,7 @@
       <HelloWorld msg="Welcome to Your Vue.js App"/>
       <PortfolioValue />
       <AssetList />
-
-      <b-form-group>
-          <b-form-select v-model="selected" :options="options"></b-form-select>
-          <b-form-input id="input-1" v-model="amount"></b-form-input>
-      </b-form-group>
-      {{amount}}
+      <AssetInput />
     </div>
   </b-container>
 </template>
@@ -19,23 +14,18 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import PortfolioValue from '../components/PortfolioValue/index.vue'
 import AssetList from '../components/AssetList/index.vue'
+import AssetInput from '../components/AssetInput/index.vue'
 
 export default {
   name: 'Dashboard',
   components: {
     HelloWorld,
     PortfolioValue,
-    AssetList
+    AssetList,
+    AssetInput
 },
   data() {
     return {
-      amount: null,
-      selected: null,
-      options: [
-        { value: null, text: 'Please select an option' },
-        { value: 'bitcoin', text: 'Bitcoin' },
-        { value: 'ethereum', text: 'Ethereum' }
-      ]
     }
   }
 }
