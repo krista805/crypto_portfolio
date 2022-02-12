@@ -1,0 +1,8 @@
+- As a user, I can see a list of my crypto assets I added
+- I can view the following in the table row
+  - Asset name, ticker symbol, crypto logo
+  - Amount in crypto
+  - Current value in USD
+  - Allocation in this asset (based on USD value)
+- I can filter the table to show my crypto assets by coin name or by usd value
+- I have the option to delete any crypto I may add to this list
