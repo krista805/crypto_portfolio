@@ -3,8 +3,8 @@
     <div class="dashboard">
       <HelloWorld msg="Welcome to Your Portfolio"/>
       <PortfolioValue />
-      <AssetList />
-      <AssetInput />
+      <AssetList :getInput="getInput" />
+      <AssetInput @clicked="onClickChild"/>
     </div>
   </b-container>
 </template>
@@ -23,9 +23,16 @@ export default {
     PortfolioValue,
     AssetList,
     AssetInput
-},
+  },
   data() {
     return {
+      getInput: null
+    }
+  },
+  methods: {
+    onClickChild (val) {
+      this.getInput = val;
+      console.log(val) // someValue
     }
   }
 }

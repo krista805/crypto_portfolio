@@ -2,6 +2,10 @@
     <b-row>
         <b-table hover :items="items" :fields="fields">
         </b-table>
+        <div v-if="getInput">
+            <p>{{getInput.selected}}</p>
+            <p>{{getInput.amount}}</p>
+        </div>
     </b-row>
 </template>
 
@@ -9,6 +13,7 @@
 <script>
 export default {
   name: 'AssetList',
+  props: ['getInput'],
     data() {
         return {
             fields: [
