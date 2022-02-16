@@ -1,11 +1,11 @@
 <template>
     <b-row>
-        <b-table hover :items="items" :fields="fields">
+        <b-table hover :items="addCrypto(getInput)" :fields="fields">
         </b-table>
-        <div v-if="getInput">
+        <!-- <div v-if="getInput">
             <p>{{getInput.selected}}</p>
             <p>{{getInput.amount}}</p>
-        </div>
+        </div> -->
     </b-row>
 </template>
 
@@ -34,13 +34,28 @@ export default {
                 sortable: false,
             }
             ],
+            // items: [
+            //     { asset: 'Bitcoin', amount: '0.223', current_usd: '$4,000'},
+            //     { asset: 'Ethereum', amount: '2.923', current_usd: '$8,000'},
+            //     { asset: 'Cardano', amount: '2224', current_usd: '$2,450'},
+            //     { asset: 'Solana', amount: '31.23', current_usd: '$5,270'},
+            //     { asset: 'Polkadot', amount: '29.2244', current_usd: '$1,200'}
+            // ],
             items: [
-                { asset: 'Bitcoin', amount: '0.223', current_usd: '$4,000'},
-                { asset: 'Ethereum', amount: '2.923', current_usd: '$8,000'},
-                { asset: 'Cardano', amount: '2224', current_usd: '$2,450'},
-                { asset: 'Solana', amount: '31.23', current_usd: '$5,270'},
-                { asset: 'Polkadot', amount: '29.2244', current_usd: '$1,200'}
+                // {
+                //     asset: null,
+                //     amount: null
+                // }
             ]
+        }
+    },
+    methods: {
+        addCrypto(getInput) {
+            this.items.push({
+                asset: getInput.selected, 
+                amount: getInput.amount
+            })
+            return this.items
         }
     }
 }

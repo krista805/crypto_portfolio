@@ -32,7 +32,7 @@ export default {
   methods: {
     onClickChild (val) {
       this.getInput = val;
-      console.log(val) // someValue
+      // console.log(val) // someValue
     }
   }
 }
