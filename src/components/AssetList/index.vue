@@ -51,11 +51,12 @@ export default {
     },
     methods: {
         addCrypto(getInput) {
-            this.items.push({
+            const asset = this.items.slice()
+            asset.push({
                 asset: getInput.selected, 
                 amount: getInput.amount
             })
-            return this.items
+            return asset
         }
     }
 }
