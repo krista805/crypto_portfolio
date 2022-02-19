@@ -22,10 +22,12 @@ export default {
             { value: 'bitcoin', text: 'Bitcoin' },
             { value: 'ethereum', text: 'Ethereum' }
         ],
-        form: {
-            amount:null,
-            selected: null
-        }
+        form: [
+            {
+                amount:null,
+                selected: null
+            }
+        ]
     }
     },
     methods: {

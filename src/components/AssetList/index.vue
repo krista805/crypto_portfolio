@@ -1,6 +1,16 @@
 <template>
     <b-row>
-        <b-table hover :items="addCrypto(getInput)" :fields="fields">
+        <b-table hover :items="cryptoList" :fields="fields">
+            <template #cell(selected)="data">
+
+                {{ data.item.selected }}
+
+            </template>
+            <template #cell(amount)="data">
+
+                {{ data.item.amount }}
+
+            </template>
         </b-table>
         <!-- <div v-if="getInput">
             <p>{{getInput.selected}}</p>
@@ -12,13 +22,18 @@
 
 <script>
 export default {
-  name: 'AssetList',
-  props: ['getInput'],
+    name: 'AssetList',
+    // props: ['getInput'],
+    props: {
+        cryptoList: Array
+    },
+
     data() {
         return {
             fields: [
             {
-                key: 'asset',
+                key: 'selected',
+                label: 'Asset',
                 sortable: true
             },
             {
@@ -41,12 +56,7 @@ export default {
             //     { asset: 'Solana', amount: '31.23', current_usd: '$5,270'},
             //     { asset: 'Polkadot', amount: '29.2244', current_usd: '$1,200'}
             // ],
-            items: [
-                // {
-                //     asset: null,
-                //     amount: null
-                // }
-            ]
+            items: []
         }
     },
     methods: {
