@@ -20,14 +20,16 @@ export default {
         options: [
             { value: null, text: 'Please select an option' },
             { value: 'bitcoin', text: 'Bitcoin' },
-            { value: 'ethereum', text: 'Ethereum' }
+            { value: 'ethereum', text: 'Ethereum' },
+            { value: 'cardano', text: 'Cardano' },
+            { value: 'solana', text: 'Solana' }
         ],
-        form: [
-            {
-                amount:null,
-                selected: null
-            }
-        ]
+        form: 
+        {
+            amount:null,
+            selected: null
+        },
+        
     }
     },
     methods: {
