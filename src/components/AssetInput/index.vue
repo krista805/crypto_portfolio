@@ -30,7 +30,6 @@ export default {
     methods: {
         resetForm() {
             this.form = {
-                id: null,
                 amount:null,
                 selected: null
             }

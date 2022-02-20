@@ -3,7 +3,7 @@
     <div class="dashboard">
       <HelloWorld msg="Welcome to Your Portfolio"/>
       <PortfolioValue />
-      <AssetList :cryptoList="rows" />
+      <AssetList :cryptoList="items" />
       <AssetInput @clicked="onClickChild"/>
     </div>
   </b-container>
@@ -26,13 +26,13 @@ export default {
   },
   data() {
     return {
-      rows: []
+      items: []
     }
   },
   methods: {
     onClickChild (val) {
-      this.rows.push(val);
-      console.log(this.rows) // someValue
+      this.items.push(val);
+      console.log(this.items) // someValue
       
     }
   }

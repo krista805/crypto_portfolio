@@ -26,7 +26,6 @@ export default {
 
     data() {
         return {
-            count: 0,
             fields: [
             {
                 key: 'selected',
@@ -53,22 +52,7 @@ export default {
             //     { asset: 'Solana', amount: '31.23', current_usd: '$5,270'},
             //     { asset: 'Polkadot', amount: '29.2244', current_usd: '$1,200'}
             // ],
-            items: []
         }
-    },
-    methods: {
-        // addCrypto(getInput) {
-        //     const txtCount=++this.count;
-        //     const id='txt_'+txtCount;
-        //     const asset = this.items.slice()
-        //     console.log('Asset test' + asset)
-        //     asset.push({
-        //         asset: getInput.selected, 
-        //         amount: getInput.amount,
-        //         id
-        //     })
-        //     return asset
-        // }
     }
 }
 </script>
