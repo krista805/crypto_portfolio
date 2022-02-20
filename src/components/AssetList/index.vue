@@ -12,10 +12,6 @@
 
             </template>
         </b-table>
-        <!-- <div v-if="getInput">
-            <p>{{getInput.selected}}</p>
-            <p>{{getInput.amount}}</p>
-        </div> -->
     </b-row>
 </template>
 
@@ -30,6 +26,7 @@ export default {
 
     data() {
         return {
+            count: 0,
             fields: [
             {
                 key: 'selected',
@@ -60,14 +57,18 @@ export default {
         }
     },
     methods: {
-        addCrypto(getInput) {
-            const asset = this.items.slice()
-            asset.push({
-                asset: getInput.selected, 
-                amount: getInput.amount
-            })
-            return asset
-        }
+        // addCrypto(getInput) {
+        //     const txtCount=++this.count;
+        //     const id='txt_'+txtCount;
+        //     const asset = this.items.slice()
+        //     console.log('Asset test' + asset)
+        //     asset.push({
+        //         asset: getInput.selected, 
+        //         amount: getInput.amount,
+        //         id
+        //     })
+        //     return asset
+        // }
     }
 }
 </script>
