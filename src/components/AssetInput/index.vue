@@ -2,7 +2,7 @@
     <b-row class="justify-content-center pt-4">
         <b-form inline>
             <b-form-group>
-                <b-form-select v-model="form.selected" :options="options"></b-form-select>
+                <b-form-select v-model="form.name" :options="options"></b-form-select>
             </b-form-group>
             <b-form-group>
                 <b-form-input id="input-1" v-model="form.amount"></b-form-input>
@@ -31,7 +31,7 @@ export default {
         resetForm() {
             this.form = {
                 amount:null,
-                selected: null
+                name: null
             }
         },
         onSubmit() {

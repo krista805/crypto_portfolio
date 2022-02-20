@@ -1,9 +1,9 @@
 <template>
     <b-row>
         <b-table hover :items="cryptoList" :fields="fields">
-            <template #cell(selected)="data">
+            <template #cell(name)="data">
 
-                {{ data.item.selected }}
+                {{ data.item.name }}
 
             </template>
             <template #cell(amount)="data">
@@ -28,7 +28,7 @@ export default {
         return {
             fields: [
             {
-                key: 'selected',
+                key: 'name',
                 label: 'Asset',
                 sortable: true
             },

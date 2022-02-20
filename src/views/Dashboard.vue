@@ -50,7 +50,7 @@ export default {
 
       let result = this.items.filter((value, index, self) =>
         index === self.findIndex((t) => (
-          t.selected === value.selected
+          t.name === value.name
         ))
       )
       return result.length
