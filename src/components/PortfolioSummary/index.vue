@@ -15,12 +15,13 @@
 
 <script>
 export default {
-  name: 'PortfolioValue',
- data() {
-    return {
-        value: '12,216.72',
-        assetTotal: '5'
+    name: 'PortfolioSummary',
+    props: ['assetTotal'],
+    data() {
+        return {
+            value: '12,216.72'
+            // assetTotal: '5'
+        }
     }
-  }
 }
 </script>

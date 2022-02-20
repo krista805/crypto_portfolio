@@ -2,8 +2,8 @@
   <b-container>
     <div class="dashboard">
       <HelloWorld msg="Welcome to Your Portfolio"/>
-      <PortfolioValue />
-      <AssetList :cryptoList="items" />
+      <PortfolioSummary :asset-total="assetTotal" />
+      <AssetList :crypto-list="items" />
       <AssetInput @clicked="onClickChild"/>
     </div>
   </b-container>
@@ -12,7 +12,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import PortfolioValue from '../components/PortfolioValue/index.vue'
+import PortfolioSummary from '../components/PortfolioSummary/index.vue'
 import AssetList from '../components/AssetList/index.vue'
 import AssetInput from '../components/AssetInput/index.vue'
 
@@ -20,13 +20,21 @@ export default {
   name: 'Dashboard',
   components: {
     HelloWorld,
-    PortfolioValue,
+    PortfolioSummary,
     AssetList,
     AssetInput
   },
   data() {
     return {
-      items: []
+      items: [],
+      // asset: {
+      //   total: null
+      // }
+    }
+  },
+  computed: {
+    assetTotal() {
+      return this.calculateAssetTotal()
     }
   },
   methods: {
@@ -34,6 +42,18 @@ export default {
       this.items.push(val);
       console.log(this.items) // someValue
       
+    },
+    calculateAssetTotal(){
+      if (!this.items.length) {
+        return 'No assets'
+      }
+
+      let result = this.items.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+          t.selected === value.selected
+        ))
+      )
+      return result.length
     }
   }
 }
