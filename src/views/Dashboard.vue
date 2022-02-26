@@ -27,9 +27,6 @@ export default {
   data() {
     return {
       items: [],
-      // asset: {
-      //   total: null
-      // }
     }
   },
   computed: {

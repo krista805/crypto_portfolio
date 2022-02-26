@@ -9,7 +9,10 @@
             <template #cell(amount)="data">
 
                 {{ data.item.amount }}
+            </template>
 
+            <template #cell(actions)="row">
+                <b-button variant="danger" @click="deleteRow(row.index)">Delete</b-button>
             </template>
         </b-table>
     </b-row>
@@ -19,7 +22,6 @@
 <script>
 export default {
     name: 'AssetList',
-    // props: ['getInput'],
     props: {
         cryptoList: Array
     },
@@ -27,23 +29,26 @@ export default {
     data() {
         return {
             fields: [
-            {
-                key: 'name',
-                label: 'Asset',
-                sortable: true
-            },
-            {
-                key: 'amount',
-                sortable: true
-            },
-            {
-                key: 'current_usd',
-                sortable: true,
-            },
-            {
-                key: 'allocation',
-                sortable: false,
-            }
+                {
+                    key: 'name',
+                    label: 'Asset',
+                    sortable: true
+                },
+                {
+                    key: 'amount',
+                    sortable: true
+                },
+                {
+                    key: 'current_usd',
+                    sortable: true,
+                },
+                {
+                    key: 'allocation',
+                    sortable: false,
+                },
+                { 
+                    key: 'actions', 
+                }
             ],
             // items: [
             //     { asset: 'Bitcoin', amount: '0.223', current_usd: '$4,000'},
@@ -52,6 +57,12 @@ export default {
             //     { asset: 'Solana', amount: '31.23', current_usd: '$5,270'},
             //     { asset: 'Polkadot', amount: '29.2244', current_usd: '$1,200'}
             // ],
+        }
+    },
+
+    methods: {
+        deleteRow(index) {
+            this.cryptoList.splice(index, 1);
         }
     }
 }
