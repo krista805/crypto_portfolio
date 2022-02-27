@@ -7,7 +7,7 @@
             <b-form-group>
                 <b-form-input id="input-1" v-model="form.amount"></b-form-input>
             </b-form-group>
-            <b-button @click.prevent="onSubmit" variant="success">Submit</b-button>
+            <b-button @click.prevent="onSubmit()" variant="success">Submit</b-button>
         </b-form>
     </b-row>
 </template>
@@ -17,6 +17,7 @@ export default {
     name: 'AssetInput',
     data() {
     return {
+        counter: 0,
         form: null,
         options: [
             { value: null, text: 'Please select an option' },
@@ -28,17 +29,24 @@ export default {
     }
     },
     methods: {
+        generateId() {
+            this.counter += 1
+            this.form.id = this.counter
+        },
         resetForm() {
             this.form = {
                 amount:null,
-                name: null
+                name: null,
+                id: null
             }
         },
         onSubmit() {
+            this.generateId()
             this.$emit('clicked', this.form)
             this.resetForm()
         }
     },
+    
     created() {
         this.resetForm()  // <-- This is for the first one
     }
