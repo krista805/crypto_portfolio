@@ -11,8 +11,8 @@
                 {{ data.item.amount }}
             </template>
 
-            <template #cell(actions)="row">
-                <b-button variant="danger" @click="deleteRow(row.index)">Delete</b-button>
+            <template #cell(actions)="data">
+                <b-button variant="danger" @click="deleteRow(data.item.id)">Delete</b-button>
             </template>
         </b-table>
     </b-row>
@@ -61,8 +61,9 @@ export default {
     },
 
     methods: {
-        deleteRow(index) {
-            this.cryptoList.splice(index, 1);
+        deleteRow(id) {
+            const removeIndex = this.cryptoList.map(item => item.id).indexOf(id);
+            (removeIndex >= 0) && this.cryptoList.splice(removeIndex, 1);
         }
     }
 }
