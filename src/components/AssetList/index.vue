@@ -62,8 +62,8 @@ export default {
 
     methods: {
         deleteRow(id) {
-            const removeIndex = this.cryptoList.map(item => item.id).indexOf(id);
-            (removeIndex >= 0) && this.cryptoList.splice(removeIndex, 1);
+            const removeById = this.cryptoList.map(item => item.id).indexOf(id);
+            (removeById >= 0) && this.cryptoList.splice(removeById, 1);
         }
     }
 }
