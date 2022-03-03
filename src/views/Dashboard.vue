@@ -5,11 +5,6 @@
       <PortfolioSummary :asset-total="assetTotal" />
       <AssetList :crypto-list="items" />
       <AssetInput @clicked="onClickChild"/>
-      <b-row v-for="coin in coins" :key='coin.id'>
-        {{coin.name}}
-
-        {{coin.current_price}}
-      </b-row>
     </div>
   </b-container>
 </template>
@@ -37,9 +32,6 @@ export default {
   computed: {
     assetTotal() {
       return this.calculateAssetTotal()
-    },
-    coins() {
-      return this.$store.state.coins
     }
   },
   mounted() {

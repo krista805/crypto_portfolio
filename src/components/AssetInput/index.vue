@@ -1,15 +1,22 @@
 <template>
-    <b-row class="justify-content-center pt-4">
-        <b-form inline>
-            <b-form-group>
-                <b-form-select v-model="form.name" :options="options"></b-form-select>
-            </b-form-group>
-            <b-form-group>
-                <b-form-input id="input-1" v-model="form.amount"></b-form-input>
-            </b-form-group>
-            <b-button @click.prevent="onSubmit()" variant="success">Submit</b-button>
-        </b-form>
-    </b-row>
+    <div>
+        <b-row class="justify-content-center pt-4">
+            <b-form inline>
+                <b-form-group>
+                    <b-form-select v-model="form.name" :options="options"></b-form-select>
+                </b-form-group>
+                <b-form-group>
+                    <b-form-input id="input-1" v-model="form.amount"></b-form-input>
+                </b-form-group>
+                <b-button @click.prevent="onSubmit()" variant="success">Submit</b-button>
+            </b-form>
+        </b-row>
+        <b-row v-for="coin in coins" :key='coin.id'>
+                {{coin.name}}
+
+                {{coin.current_price}}
+        </b-row>
+    </div>
 </template>
 
 <script>
@@ -27,6 +34,11 @@ export default {
             { value: 'solana', text: 'Solana' }
         ],
     }
+    },
+    computed: {
+        coins() {
+            return this.$store.state.coins
+        }
     },
     methods: {
         generateId() {
