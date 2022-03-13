@@ -24,7 +24,6 @@ export default {
     return {
         counter: 0,
         form: null,
-        coinType:null,
         coinTypes: [
             { value: null, text: 'Please select an option' }
         ],
@@ -69,7 +68,7 @@ export default {
         },
         onSubmit() {
             this.generateId()
-            this.$emit('clicked', this.form, this.coinType)
+            this.$emit('clicked', this.form)
             this.resetForm()
         }
     },
