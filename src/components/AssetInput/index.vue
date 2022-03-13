@@ -49,7 +49,7 @@ export default {
             let allCrypto = this.getCrypto
             allCrypto.forEach(item => (
                 this.coinTypes.push({ 
-                    value: item.id, 
+                    value: item.name, 
                     text: item.name 
                 })
             ))
