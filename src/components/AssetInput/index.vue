@@ -3,44 +3,59 @@
         <b-row class="justify-content-center pt-4">
             <b-form inline>
                 <b-form-group>
-                    <b-form-select v-model="form.name" :options="options"></b-form-select>
+                    <b-form-select v-model="form.name" :options="coinTypes"></b-form-select>
                 </b-form-group>
                 <b-form-group>
                     <b-form-input id="input-1" v-model="form.amount"></b-form-input>
                 </b-form-group>
                 <b-button @click.prevent="onSubmit()" variant="success">Submit</b-button>
             </b-form>
-        </b-row>
-        <b-row v-for="coin in coins" :key='coin.id'>
-                {{coin.name}}
-
-                {{coin.current_price}}
+            {{typeOfCoin}}
         </b-row>
     </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex"
+
 export default {
     name: 'AssetInput',
     data() {
     return {
         counter: 0,
         form: null,
-        options: [
-            { value: null, text: 'Please select an option' },
-            { value: 'bitcoin', text: 'Bitcoin' },
-            { value: 'ethereum', text: 'Ethereum' },
-            { value: 'cardano', text: 'Cardano' },
-            { value: 'solana', text: 'Solana' }
+        coinType:null,
+        coinTypes: [
+            { value: null, text: 'Please select an option' }
         ],
     }
     },
     computed: {
-        coins() {
-            return this.$store.state.coins
-        }
+        ...mapGetters([
+            'getCrypto'
+        ]),
+
+        // coins() {
+        //     return this.$store.state.coins
+        // },
+
+        typeOfCoin() {
+            return this.cryptoOptions()
+        },
     },
     methods: {
+        ...mapActions(['fetchCrypto']),
+
+        cryptoOptions() {
+            let allCrypto = this.getCrypto
+            allCrypto.forEach(item => (
+                this.coinTypes.push({ 
+                    value: item.id, 
+                    text: item.name 
+                })
+            ))
+        },
+
         generateId() {
             this.counter += 1
             this.form.id = this.counter
@@ -54,7 +69,7 @@ export default {
         },
         onSubmit() {
             this.generateId()
-            this.$emit('clicked', this.form)
+            this.$emit('clicked', this.form, this.coinType)
             this.resetForm()
         }
     },

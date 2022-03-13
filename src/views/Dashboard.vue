@@ -35,7 +35,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("fetchCoins");
+    this.$store.dispatch("fetchCrypto");
   },
   methods: {
     onClickChild (val) {
