@@ -11,6 +11,10 @@
                 {{ data.item.amount }}
             </template>
 
+            <template #cell(current_usd)="data">
+                {{ totalUsdValue(data.item.amount, data.item.price) }}
+            </template>
+
             <template #cell(actions)="data">
                 <b-button variant="danger" @click="deleteRow(data.item.id)">Delete</b-button>
             </template>
@@ -20,6 +24,7 @@
 
 
 <script>
+import { mapActions } from "vuex"
 export default {
     name: 'AssetList',
     props: {
@@ -49,18 +54,22 @@ export default {
                 { 
                     key: 'actions', 
                 }
-            ],
-            // items: [
-            //     { asset: 'Bitcoin', amount: '0.223', current_usd: '$4,000'},
-            //     { asset: 'Ethereum', amount: '2.923', current_usd: '$8,000'},
-            //     { asset: 'Cardano', amount: '2224', current_usd: '$2,450'},
-            //     { asset: 'Solana', amount: '31.23', current_usd: '$5,270'},
-            //     { asset: 'Polkadot', amount: '29.2244', current_usd: '$1,200'}
-            // ],
+            ]
         }
     },
 
+    computed: {
+
+    },
+
     methods: {
+        ...mapActions(["fetchCrypto"]),
+
+        totalUsdValue (amount, price) {
+            const usdValue = amount * price
+            return usdValue
+        },
+
         deleteRow(id) {
             const removeById = this.cryptoList.map(item => item.id).indexOf(id);
             (removeById >= 0) && this.cryptoList.splice(removeById, 1);

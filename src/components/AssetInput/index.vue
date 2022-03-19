@@ -33,7 +33,7 @@ export default {
     data() {
         return {
             counter: 0,
-            form: null
+            form: null,
         }
     },
     computed: {
@@ -48,6 +48,14 @@ export default {
     },
     methods: {
         ...mapActions(['fetchCrypto']),
+        
+        usdPrice (coin) {
+            for (let i = 0; i < this.coinList.length; i++) {
+                if(coin === this.coinList[i].name ) {
+                    this.form.price = this.coinList[i].current_price
+                }
+            }
+        },
 
         generateId() {
             this.counter += 1
@@ -57,10 +65,12 @@ export default {
             this.form = {
                 amount:null,
                 name: null,
+                price: null,
                 id: null
             }
         },
         onSubmit() {
+            this.usdPrice(this.form.name)
             this.generateId()
             this.$emit('clicked', this.form)
             this.resetForm()
