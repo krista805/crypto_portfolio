@@ -1,16 +1,26 @@
 <template>
     <div>
         <b-row class="justify-content-center pt-4">
+            <!-- Look into implementing this: https://stackoverflow.com/questions/59543628/adding-img-attribute-to-options-in-b-select-component
+            or scoped slots
+            https://vue-select.org/guide/slots.html
+             -->
             <b-form inline>
                 <b-form-group>
-                    <b-form-select v-model="form.name" :options="coinTypes"></b-form-select>
+                    <b-form-select v-model="form.name">
+                        <option :value="null">
+                            Please select an option
+                        </option>
+                        <option v-for="coin in coinList" :key="coin.id" :value="coin.name">
+                            {{ coin.name }}
+                        </option>
+                    </b-form-select>
                 </b-form-group>
                 <b-form-group>
                     <b-form-input id="input-1" v-model="form.amount"></b-form-input>
                 </b-form-group>
                 <b-button @click.prevent="onSubmit()" variant="success">Submit</b-button>
             </b-form>
-            {{typeOfCoin}}
         </b-row>
     </div>
 </template>
@@ -21,39 +31,23 @@ import { mapGetters, mapActions } from "vuex"
 export default {
     name: 'AssetInput',
     data() {
-    return {
-        counter: 0,
-        form: null,
-        coinTypes: [
-            { value: null, text: 'Please select an option' }
-        ],
-    }
+        return {
+            counter: 0,
+            form: null
+        }
     },
     computed: {
         ...mapGetters([
             'getCrypto'
         ]),
 
-        // coins() {
-        //     return this.$store.state.coins
-        // },
-
-        typeOfCoin() {
-            return this.cryptoOptions()
-        },
+        coinList () {
+            let coins = this.getCrypto
+            return coins
+        }
     },
     methods: {
         ...mapActions(['fetchCrypto']),
-
-        cryptoOptions() {
-            let allCrypto = this.getCrypto
-            allCrypto.forEach(item => (
-                this.coinTypes.push({ 
-                    value: item.name, 
-                    text: item.name 
-                })
-            ))
-        },
 
         generateId() {
             this.counter += 1
