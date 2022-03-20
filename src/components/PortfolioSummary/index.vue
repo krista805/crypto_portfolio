@@ -2,7 +2,7 @@
     <b-row class="total">
         <b-col cols="6" class="total__value">
             <div class="value">
-                <span>${{usdTotal}}</span>
+                <span>${{value}}</span>
             </div>
         </b-col>
         <b-col cols="6" class="total__assets">
@@ -16,7 +16,7 @@
 <script>
 export default {
     name: 'PortfolioSummary',
-    props: ['assetTotal', 'usdTotal'],
+    props: ['assetTotal'],
     data() {
         return {
             value: '12,216.72'
