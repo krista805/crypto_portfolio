@@ -2,7 +2,7 @@
   <b-container>
     <div class="dashboard">
       <HelloWorld msg="Welcome to Your Portfolio"/>
-      <PortfolioSummary :asset-total="assetTotal" />
+      <PortfolioSummary :asset-total="assetTotal" :usd-total="usdTotal" />
       <AssetList :crypto-list="items" />
       <AssetInput @clicked="onClickChild"/>
     </div>
@@ -33,6 +33,12 @@ export default {
     assetTotal() {
       return this.calculateAssetTotal()
     }
+
+    // usdTotal() {
+    //   for (let i = 0; i < this.items.length; i++) {
+    //     this.items.
+    //   }
+    // }
   },
   mounted() {
     this.$store.dispatch("fetchCrypto");
@@ -58,3 +64,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .logo {
+    max-width:25px;
+  }
+</style>

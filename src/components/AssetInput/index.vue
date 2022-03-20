@@ -53,6 +53,7 @@ export default {
             for (let i = 0; i < this.coinList.length; i++) {
                 if(coin === this.coinList[i].name ) {
                     this.form.price = this.coinList[i].current_price
+                    this.form.logo = this.coinList[i].image
                 }
             }
         },
@@ -66,7 +67,8 @@ export default {
                 amount:null,
                 name: null,
                 price: null,
-                id: null
+                id: null,
+                logo: null
             }
         },
         onSubmit() {

@@ -3,7 +3,7 @@
         <b-table hover :items="cryptoList" :fields="fields">
             <template #cell(name)="data">
 
-                {{ data.item.name }}
+                <img class="logo mr-1" :src="data.item.logo"/> {{ data.item.name }}
 
             </template>
             <template #cell(amount)="data">
