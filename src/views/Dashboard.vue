@@ -2,7 +2,7 @@
   <b-container>
     <div class="dashboard">
       <HelloWorld msg="Welcome to Your Portfolio"/>
-      <PortfolioSummary :asset-total="assetTotal" />
+      <PortfolioSummary :asset-total="assetTotal" :usd-total="usdTotal" />
       <AssetList :crypto-list="items" />
       <AssetInput @clicked="onClickChild"/>
     </div>
@@ -32,6 +32,10 @@ export default {
   computed: {
     assetTotal() {
       return this.calculateAssetTotal()
+    },
+
+    usdTotal() {
+      return this.items.reduce(function(a, c){return a + Number((c.amount*c.price) || 0)}, 0)
     }
   },
   mounted() {
@@ -40,9 +44,8 @@ export default {
   methods: {
     onClickChild (val) {
       this.items.push(val);
-      console.log(this.items) // someValue
-      
     },
+    
     calculateAssetTotal(){
       if (!this.items.length) {
         return 'No assets'
@@ -55,7 +58,7 @@ export default {
       )
       return result.length
     }
-  }
+  },
 }
 </script>
 

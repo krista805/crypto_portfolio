@@ -12,7 +12,7 @@
             </template>
 
             <template #cell(current_usd)="data">
-                {{ totalUsdValue(data.item.amount, data.item.price) }}
+                {{ usdValue(data.item.amount, data.item.price) }}
             </template>
 
             <template #cell(actions)="data">
@@ -58,14 +58,10 @@ export default {
         }
     },
 
-    computed: {
-
-    },
-
     methods: {
         ...mapActions(["fetchCrypto"]),
 
-        totalUsdValue (amount, price) {
+        usdValue (amount, price) {
             const usdValue = amount * price
             return usdValue
         },

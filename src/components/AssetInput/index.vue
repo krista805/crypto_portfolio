@@ -17,7 +17,7 @@
                     </b-form-select>
                 </b-form-group>
                 <b-form-group>
-                    <b-form-input id="input-1" v-model="form.amount"></b-form-input>
+                    <b-form-input id="input-1" type="number" v-model="form.amount"></b-form-input>
                 </b-form-group>
                 <b-button @click.prevent="onSubmit()" variant="success">Submit</b-button>
             </b-form>
