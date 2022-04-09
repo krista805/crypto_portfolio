@@ -36,7 +36,7 @@ export default {
 
     usdTotal() {
       return this.items.reduce(function(a, c){
-        return a + Number((c.amount*c.price) || 0)
+        return parseFloat((a + Number((c.amount*c.price) || 0)).toFixed(2))
       }, 0)
     }
   },
