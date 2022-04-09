@@ -3,7 +3,7 @@
     <div class="dashboard">
       <HelloWorld msg="Welcome to Your Portfolio"/>
       <PortfolioSummary :asset-total="assetTotal" :usd-total="usdTotal" />
-      <AssetList :crypto-list="items" />
+      <AssetList :crypto-list="items" :usd-total="usdTotal" />
       <AssetInput @clicked="onClickChild"/>
     </div>
   </b-container>

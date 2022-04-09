@@ -56,11 +56,15 @@ export default {
                     this.form.logo = this.coinList[i].image
                 }
             }
+            this.calcAmountByPrice()
         },
 
         generateId() {
             this.counter += 1
             this.form.id = this.counter
+        },
+        calcAmountByPrice() {
+            this.form.usdPrice = this.form.amount * this.form.price
         },
         resetForm() {
             this.form = {
@@ -68,7 +72,8 @@ export default {
                 name: null,
                 price: null,
                 id: null,
-                logo: null
+                logo: null,
+                usdPrice: null
             }
         },
         onSubmit() {

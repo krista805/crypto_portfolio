@@ -12,7 +12,11 @@
             </template>
 
             <template #cell(current_usd)="data">
-                {{ usdValue(data.item.amount, data.item.price) }}
+                {{data.item.usdPrice}}
+            </template>
+
+            <template #cell(allocation)="data">
+               {{calculateAllocation(data.item.usdPrice)}}
             </template>
 
             <template #cell(actions)="data">
@@ -28,7 +32,8 @@ import { mapActions } from "vuex"
 export default {
     name: 'AssetList',
     props: {
-        cryptoList: Array
+        cryptoList: Array,
+        usdTotal: Number
     },
 
     data() {
@@ -54,16 +59,18 @@ export default {
                 { 
                     key: 'actions', 
                 }
-            ]
+            ],
+
+            rowValue: null
         }
     },
-
     methods: {
         ...mapActions(["fetchCrypto"]),
-
-        usdValue (amount, price) {
-            const usdValue = amount * price
-            return usdValue
+        
+        calculateAllocation(val) {
+            console.log(val)
+            // Inputs are: Usd total of row and total of entire column
+            return this.usdTotal
         },
 
         deleteRow(id) {
