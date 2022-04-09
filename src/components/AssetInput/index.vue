@@ -56,15 +56,15 @@ export default {
                     this.form.logo = this.coinList[i].image
                 }
             }
-            this.calcAmountByPrice()
+            this.calculateAmountByPrice()
         },
 
         generateId() {
             this.counter += 1
             this.form.id = this.counter
         },
-        calcAmountByPrice() {
-            this.form.usdPrice = (this.form.amount * this.form.price).toFixed(2);
+        calculateAmountByPrice() {
+            this.form.usdPrice = Number((this.form.amount * this.form.price).toFixed(2))
         },
         resetForm() {
             this.form = {

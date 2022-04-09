@@ -17,7 +17,7 @@
 
             <template #cell(allocation)="data">
                {{calculateAllocation(data.item.usdPrice)}} 
-               <b-progress :value="calculateAllocation(data.item.usdPrice)" variant="success"></b-progress>
+               <b-progress :value="calculateAllocation(data.item.usdPrice)" :variant="variantColor"></b-progress>
             </template>
 
             <template #cell(actions)="data">
@@ -61,8 +61,7 @@ export default {
                     key: 'actions', 
                 }
             ],
-
-            allocation: null
+            variantColor: null
         }
     },
     methods: {
@@ -73,7 +72,7 @@ export default {
             // Inputs are: Usd total of row and total of entire column
             return percent
         },
-
+        
         deleteRow(id) {
             const removeById = this.cryptoList.map(item => item.id).indexOf(id);
             (removeById >= 0) && this.cryptoList.splice(removeById, 1);

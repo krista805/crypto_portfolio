@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     onClickChild (val) {
-      this.items.push(val);
+      this.items.push(val)
     },
 
     calculateAssetTotal(){
