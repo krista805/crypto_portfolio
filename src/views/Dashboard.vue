@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <div class="dashboard">
-      <HelloWorld msg="Welcome to Your Portfolio"/>
+      <HelloWorld msg=""/>
       <PortfolioSummary :asset-total="assetTotal" :usd-total="usdTotal" />
       <AssetList :crypto-list="items" :usd-total="usdTotal" />
       <AssetInput @clicked="onClickChild"/>

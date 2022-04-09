@@ -16,7 +16,8 @@
             </template>
 
             <template #cell(allocation)="data">
-               {{calculateAllocation(data.item.usdPrice)}}
+               {{calculateAllocation(data.item.usdPrice)}} 
+               <b-progress :value="calculateAllocation(data.item.usdPrice)" variant="success"></b-progress>
             </template>
 
             <template #cell(actions)="data">
@@ -61,15 +62,16 @@ export default {
                 }
             ],
 
-            rowValue: null
+            allocation: null
         }
     },
     methods: {
         ...mapActions(["fetchCrypto"]),
         
         calculateAllocation(val) {
+            let percent = Math.round(val / this.usdTotal * 100)
             // Inputs are: Usd total of row and total of entire column
-            return Math.round(val / this.usdTotal * 100)
+            return percent
         },
 
         deleteRow(id) {
