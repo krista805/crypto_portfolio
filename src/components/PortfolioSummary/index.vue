@@ -19,7 +19,6 @@ export default {
     props: ['assetTotal', 'usdTotal'],
     data() {
         return {
-            value: '12,216.72'
         }
     }
 }

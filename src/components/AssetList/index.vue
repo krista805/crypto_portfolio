@@ -68,9 +68,8 @@ export default {
         ...mapActions(["fetchCrypto"]),
         
         calculateAllocation(val) {
-            console.log(val)
             // Inputs are: Usd total of row and total of entire column
-            return this.usdTotal
+            return Math.round(val / this.usdTotal * 100)
         },
 
         deleteRow(id) {

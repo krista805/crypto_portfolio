@@ -64,7 +64,7 @@ export default {
             this.form.id = this.counter
         },
         calcAmountByPrice() {
-            this.form.usdPrice = this.form.amount * this.form.price
+            this.form.usdPrice = (this.form.amount * this.form.price).toFixed(2);
         },
         resetForm() {
             this.form = {
