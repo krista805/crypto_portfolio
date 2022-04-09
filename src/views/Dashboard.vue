@@ -35,7 +35,9 @@ export default {
     },
 
     usdTotal() {
-      return this.items.reduce(function(a, c){return a + Number((c.amount*c.price) || 0)}, 0)
+      return this.items.reduce(function(a, c){
+        return a + Number((c.amount*c.price) || 0)
+      }, 0)
     }
   },
   mounted() {
@@ -45,7 +47,7 @@ export default {
     onClickChild (val) {
       this.items.push(val);
     },
-    
+
     calculateAssetTotal(){
       if (!this.items.length) {
         return 'No assets'
