@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/crypto_portfolio'
+    publicPath: '/crypto_portfolio/'
 }
