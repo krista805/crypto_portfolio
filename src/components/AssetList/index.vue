@@ -68,13 +68,9 @@ export default {
         ...mapActions(["fetchCrypto"]),
 
         setVariantColor(allocation) {
-            if (allocation >= 50) {
-                return 'success'
-            } else if (allocation < 50 && allocation > 20) {
-                return 'info'
-            } else {
-                return 'warning'
-            }
+            return allocation >= 50 ? 'success'
+            : allocation < 50 && allocation > 20 ? 'info'
+            : 'warning'
         },
 
         deleteRow(id) {
