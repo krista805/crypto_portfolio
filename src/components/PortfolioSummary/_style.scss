@@ -1,0 +1,31 @@
+.total {
+    &__value {
+        .title {
+
+        }
+
+        .number {
+            font-size:4rem;
+        }
+    }
+
+    &__assets {
+        .rounded-circle {
+            width:150px;
+            height:150px;
+            // line-height:150px;
+            margin: 0 0 0 auto;
+            position: relative;
+            text-align: center;
+            border: 8px solid #092B5E !important;
+
+            .number {
+                font-size: 3rem;
+            }
+
+            .text {
+                font-size: 1rem;
+            }
+        }
+    }
+}

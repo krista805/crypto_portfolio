@@ -9,6 +9,17 @@
 </template>
 
 <style lang="scss">
+body, html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh !important;
+}
+
+body {
+    background-color:#FAFCFF !important;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

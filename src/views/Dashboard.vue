@@ -2,7 +2,7 @@
   <b-container>
     <div class="dashboard">
       <HelloWorld msg=""/>
-      <PortfolioSummary :asset-total="assetTotal" :usd-total="usdTotal" />
+      <PortfolioSummary :asset-total="assetTotal" :usd-total="usdTotal" class="pb-4" />
       <AssetList :crypto-list="items" :usd-total="usdTotal" />
       <AssetInput @clicked="onClickChild"/>
     </div>
@@ -54,7 +54,7 @@ export default {
 
     calculateAssetTotal(){
       if (!this.items.length) {
-        return 'No assets'
+        return '0'
       }
 
       let result = this.items.filter((value, index, self) =>
