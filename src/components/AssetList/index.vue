@@ -55,7 +55,7 @@ export default {
                 },
                 {
                     key: 'allocation',
-                    sortable: false,
+                    sortable: true,
                 },
                 { 
                     key: 'actions', 
