@@ -17,7 +17,7 @@
 
             <template #cell(allocation)="data">
                {{data.item.allocation}}
-               <b-progress :value="data.item.allocation" :variant="variantColor"></b-progress>
+               <b-progress :value="data.item.allocation" :variant="setVariantColor(data.item.allocation)"></b-progress>
             </template>
 
             <template #cell(actions)="data">
@@ -61,11 +61,21 @@ export default {
                     key: 'actions', 
                 }
             ],
-            variantColor: 'info'
+            variantColor: null
         }
     },
     methods: {
         ...mapActions(["fetchCrypto"]),
+
+        setVariantColor(allocation) {
+            if (allocation >= 50) {
+                return 'success'
+            } else if (allocation < 50 && allocation > 20) {
+                return 'info'
+            } else {
+                return 'warning'
+            }
+        },
 
         deleteRow(id) {
             const removeById = this.cryptoList.map(item => item.id).indexOf(id);
