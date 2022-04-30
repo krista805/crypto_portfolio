@@ -29,6 +29,7 @@ export default {
       items: [],
     }
   },
+
   computed: {
     assetTotal() {
       return this.calculateAssetTotal()
@@ -42,6 +43,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchCrypto");
+  },
+  updated() {
+    this.calculateAllocation()
   },
   methods: {
     onClickChild (val) {
@@ -59,7 +63,14 @@ export default {
         ))
       )
       return result.length
-    }
+    },
+    
+    calculateAllocation() {
+      for (let i = 0; i < this.items.length; i++) {
+        let percent = Math.round(this.items[i].usdPrice / this.usdTotal * 100)
+        this.items[i].allocation = percent
+      }
+    },
   },
 }
 </script>

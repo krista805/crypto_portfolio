@@ -16,8 +16,8 @@
             </template>
 
             <template #cell(allocation)="data">
-               {{calculateAllocation(data.item.usdPrice)}} 
-               <b-progress :value="calculateAllocation(data.item.usdPrice)" :variant="variantColor"></b-progress>
+               {{data.item.allocation}}
+               <b-progress :value="data.item.allocation" :variant="variantColor"></b-progress>
             </template>
 
             <template #cell(actions)="data">
@@ -61,18 +61,12 @@ export default {
                     key: 'actions', 
                 }
             ],
-            variantColor: null
+            variantColor: 'info'
         }
     },
     methods: {
         ...mapActions(["fetchCrypto"]),
-        
-        calculateAllocation(val) {
-            let percent = Math.round(val / this.usdTotal * 100)
-            // Inputs are: Usd total of row and total of entire column
-            return percent
-        },
-        
+
         deleteRow(id) {
             const removeById = this.cryptoList.map(item => item.id).indexOf(id);
             (removeById >= 0) && this.cryptoList.splice(removeById, 1);

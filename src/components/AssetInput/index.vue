@@ -73,7 +73,8 @@ export default {
                 price: null,
                 id: null,
                 logo: null,
-                usdPrice: null
+                usdPrice: null,
+                allocation: null
             }
         },
         onSubmit() {
