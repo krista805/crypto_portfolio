@@ -1,0 +1,31 @@
+.table {
+    td {
+      vertical-align: middle;
+    }
+
+    &__asset {
+        &.first {
+            position: relative;
+
+            .ticker {
+                position: absolute;
+                left: -12px;
+                top: -73%;
+                bottom: -73%;
+                border: 3px solid;
+
+                &.success {
+                    border-color: #28a745;
+                }
+
+                &.info {
+                    border-color: #17a2b8;
+                }
+
+                &.warning {
+                    border-color: #ffc107;
+                }
+            }
+        } 
+    }
+}

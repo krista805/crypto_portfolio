@@ -2,8 +2,10 @@
     <b-row>
         <b-table hover :items="cryptoList" :fields="fields">
             <template #cell(name)="data">
-
-                <img class="logo mr-1" :src="data.item.logo"/> {{ data.item.name }}
+                <div class="table__asset first">
+                    <span :class="setVariantColor(data.item.allocation)" class="ticker"></span>
+                     <img class="logo mr-1" :src="data.item.logo"/> {{ data.item.name }}
+                </div>
 
             </template>
             <template #cell(amount)="data">
@@ -43,22 +45,27 @@ export default {
                 {
                     key: 'name',
                     label: 'Asset',
+                    tdClass: 'align-middle',
                     sortable: true
                 },
                 {
                     key: 'amount',
+                    tdClass: 'align-middle',
                     sortable: true
                 },
                 {
                     key: 'current_usd',
+                    tdClass: 'align-middle',
                     sortable: true,
                 },
                 {
                     key: 'allocation',
+                    tdClass: 'align-middle',
                     sortable: true,
                 },
                 { 
                     key: 'actions', 
+                    tdClass: 'align-middle'
                 }
             ],
             variantColor: null
@@ -80,3 +87,7 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+@import 'style';
+</style>
