@@ -1,5 +1,8 @@
 <template>
     <b-row>
+        <b-col cols="12">
+            <h2 class="text-uppercase text-left">Overview</h2>
+        </b-col>
         <b-table hover :items="cryptoList" :fields="fields">
             <template #cell(name)="data">
                 <div class="table__asset first">
